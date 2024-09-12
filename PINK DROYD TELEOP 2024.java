@@ -105,10 +105,7 @@ public class Teleop10393F extends LinearOpMode {
         // Initialize hang system
         DcMotor hang = hardwareMap.get(DcMotor.class, "hang");
         hang.setDirection(DcMotor.Direction.FORWARD);
-        //hang.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         hang.setTargetPosition(0);
-        //hang.setPower(1);
-        //hang.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         double hangTarget = 0;
 
 
@@ -170,7 +167,7 @@ public class Teleop10393F extends LinearOpMode {
 
             /** Bucket logic
              * bucketTarget += -gamepad2.left_stick_y * DELTA_TIME / ARM_MIN_TIME; /
- * Assume bucket and arm take same amount of time
+             * Assume bucket and arm take same amount of time
              * bucketTarget = Math.min(Math.max(0, bucketTarget), 1);
              * if (Math.abs(gamepad2.left_stick_y) > MIN_INPUT_THRESHOLD) {
              *  bucket.setPosition(bucketTarget);
@@ -220,11 +217,6 @@ public class Teleop10393F extends LinearOpMode {
             // Hang logic
             float hangInput = gamepad1.right_trigger - gamepad1.left_trigger;
             hang.setPower(hangInput);
-            //hangTarget += hangInput * HANG_SPEED * DELTA_TIME;
-            //hangTarget = Math.max(0, hangTarget);
-            //if (Math.abs(hangInput) > MIN_INPUT_THRESHOLD) {
-            //    hang.setTargetPosition((int)hangTarget);
-            //}
 
 
             // Telemetry
@@ -234,19 +226,10 @@ public class Teleop10393F extends LinearOpMode {
             telemetry.addData("armTarget", armTarget);
             telemetry.addData("bucketTarget", bucketTarget);
             telemetry.addData("bucket.getPosition()", bucket.getPosition());
-            // telemetry.addData("bucket.MAX_POSITION", bucket.MAX_POSITION);
-            // telemetry.addData("bucket.MIN_POSITION", bucket.MIN_POSITION);
-            // telemetry.addData("bucket.getPortNumber()", bucket.getPortNumber());
-            // telemetry.addData("intakeEnabled", intakeEnabled);
-            // telemetry.addData("intake.getPower()", intake.getPower());
-            // telemetry.addData("intake.getCurrentPosition()", intake.getCurrentPosition());
-             telemetry.addData("studEnabled", studEnabled);
-             telemetry.addData("stud.getPosition()", stud.getPosition());
-             telemetry.addData("stud.MAX_POSITION", stud.MAX_POSITION);
-             telemetry.addData("stud.MIN_POSITION", stud.MIN_POSITION);
-            // telemetry.addData("plane.getPosition()", plane.getPosition());
-            // telemetry.addData("plane.MAX_POSITION", plane.MAX_POSITION);
-            // telemetry.addData("plane.MIN_POSITION", plane.MIN_POSITION);
+            telemetry.addData("studEnabled", studEnabled);
+            telemetry.addData("stud.getPosition()", stud.getPosition());
+            telemetry.addData("stud.MAX_POSITION", stud.MAX_POSITION);
+            telemetry.addData("stud.MIN_POSITION", stud.MIN_POSITION);
             telemetry.addData("backRightDrive", backRightDrive.getPower());
             telemetry.addData("backLeftDrive", backLeftDrive.getPower());
             telemetry.addData("hangTarget", hangTarget);
